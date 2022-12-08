@@ -3,8 +3,13 @@ from rest_framework import serializers
 from .models import Address
 
 
-class AddressSerializer(serializers.ModelSerializer):
+class ReadAddressSerializer(serializers.ModelSerializer):
+    country = serializers.ReadOnlyField(source='country.name')
+    city = serializers.ReadOnlyField(source='city.name')
     class Meta:
         model = Address
-        fields = '__all__'
+        fields = (
+            'country', 'city', 'street',
+            'house_number', 'apartment_number'
+        )
 

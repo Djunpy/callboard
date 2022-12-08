@@ -6,7 +6,7 @@ from rest_framework import serializers
 
 from .models import Profile
 from address.models import Address
-from address.serializers import AddressSerializer
+from address.serializers import ReadAddressSerializer
 
 
 User = get_user_model()
@@ -15,7 +15,7 @@ User = get_user_model()
 class UserProfileSerializer(serializers.ModelSerializer):
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     username = serializers.ReadOnlyField(source='user.username')
-    address = AddressSerializer(partial=True)
+    address = ReadAddressSerializer(partial=True)
 
     class Meta:
         model = Profile

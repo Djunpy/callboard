@@ -5,6 +5,9 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('accounts.urls', namespace='accounts')),
+    path('api/', include('advert.urls', namespace='advert')),
+    path('api/', include('transport.urls', namespace='transport')),
+    path('api/', include('property.urls', namespace='property'))
 ]
 
 if settings.DEBUG:

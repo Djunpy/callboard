@@ -3,10 +3,14 @@ from django.utils.safestring import mark_safe
 from mptt.admin import MPTTModelAdmin
 
 
-from .models import AdvertCategory
+from .models import AdvertCategory, Picture, Brand
 
 
 class AdvertCategoryMPTTAdmin(MPTTModelAdmin):
+    mptt_level_indent = 20
+
+
+class BrandMPTTAdmin(MPTTModelAdmin):
     mptt_level_indent = 20
 
 
@@ -25,5 +29,6 @@ class AdvertCategoryMPTTAdmin(MPTTModelAdmin):
 #         if hasattr(obj, 'discount'):
 #             return obj.discount.sum
 
-
+admin.site.register(Brand, AdvertCategoryMPTTAdmin)
 admin.site.register(AdvertCategory, AdvertCategoryMPTTAdmin)
+admin.site.register(Picture)

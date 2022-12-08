@@ -1,0 +1,38 @@
+.advert-attention{
+    @apply bg-gray-100 p-2 rounded-xl;
+    .attention-box{
+        @apply w-64 flex flex-col items-center justify-center overflow-hidden;
+        .attention-img{
+            @apply relative overflow-hidden w-60;
+            &>img{
+                @apply w-full rounded-xl;
+            }
+            .advert-price {
+                @apply absolute text-center bottom-2 h-5 w-28 left-0 bg-primary-color overflow-hidden rounded-r-full;
+                p{
+                    @apply text-sm text-white;
+                    span{
+                        @apply text-black;
+                    }
+                }
+            }
+            .advert-bookmark{
+                @apply absolute top-3 right-3 bg-gray-300 p-1 rounded-full hover:bg-primary-color ;
+                img{
+                    @apply w-5;
+                }
+            }
+        }
+        .advert-desc{
+            h4{
+                @apply font-bold truncate w-52;
+            }
+            p{
+                @apply flex flex-col;
+                span{
+                    @apply text-sm;
+                }
+            }
+        }
+    }
+}

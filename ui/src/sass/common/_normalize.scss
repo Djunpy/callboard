@@ -1,0 +1,30 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    transition: all .2s linear;
+}
+
+body {
+    @apply bg-slate-100;
+    font-family: 'Roboto', sans-serif;
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    li {
+        list-style: none;
+    }
+}
+
+input::placeholder {
+    font: inherit;
+}
+
