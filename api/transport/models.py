@@ -3,7 +3,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
-from advert.models import AdvertAbstract
+from advert.models import AdvertAbstract, Color, Condition
 
 
 class TransportBrand(MPTTModel):
@@ -25,19 +25,11 @@ class TransportBodyType(models.Model):
 
 
 class CommonTransport(models.Model):
+    """Общие поля для разных видов транспортов"""
 
-    COLORS = (
-            ('white', 'Белый'), ('black', 'Черный'),
-            ('gray', 'Серый'), ('brown', 'Коричневый'),
-            ('red', 'Красный'), ('green', 'Зеленый'),
-            ('blue', 'Синий'), ('pink', 'Розовый'),
-            ('violet', 'Фиолетовый')
-        )
-
+    color = models.ForeignKey(Color, on_delete=models.SET_NULL, blank=True, null=True, verbose_name='Цвет транспорта')
     brand = models.ForeignKey('advert.Brand', on_delete=models.CASCADE, related_name="%(app_label)s_%(class)s_transport")
     type_brand = models.ForeignKey('advert.Brand', on_delete=models.CASCADE, related_name="%(app_label)s_%(class)s_transport_type")
-    color = models.CharField(max_length=15, choices=COLORS,
-                             blank=True, null=True)
     discount = models.ForeignKey('advert.Discount', on_delete=models.CASCADE,
                                  blank=True, null=True,  related_name="%(app_label)s_%(class)s_transport")
 
@@ -49,16 +41,11 @@ class CommonTransport(models.Model):
 class OperationHistory(models.Model):
     """История эксплуатации и состояние"""
 
-    CONDITION = (
-        ('b', 'Битый'), ('nb', 'Не битый'),
-
-    )
-
     CONDITION_2 = (
         ('n', 'Новый'), ('pr', 'С пробегом')
     )
 
-    condition = models.CharField(max_length=2, choices=CONDITION, default='nb')
+    condition = models.ForeignKey(Condition, on_delete=models.CASCADE, verbose_name='Состояние транспорта')
     condition_2 = models.CharField(max_length=2, choices=CONDITION_2, default='n')
 
     mileage = models.CharField(max_length=50, blank=True, null=True, verbose_name='Пробег')

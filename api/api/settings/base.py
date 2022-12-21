@@ -22,6 +22,7 @@ CUSTOM_APPS = [
     'complaint.apps.ComplaintConfig',
     'transport.apps.TransportConfig',
     'property.apps.PropertyConfig',
+    'jobs.apps.JobsConfig',
 ]
 
 THIRD_PARTY_APPS = [

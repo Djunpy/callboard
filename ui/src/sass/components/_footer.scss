@@ -1,0 +1,18 @@
+.footer{
+    @apply bg-second-dark-color w-full;
+    .footer-box{
+        @apply container mx-auto flex flex-col items-center md:flex-row md:justify-between p-3;
+        .footer-logo{
+            @apply order-2 md:order-none;
+        }
+        .footer-info{
+            @apply flex gap-x-5 text-white;
+            .footer-list{
+                @apply space-y-2;
+                h4{
+                    @apply font-bold pb-2;
+                }
+            }
+        }
+    }
+}

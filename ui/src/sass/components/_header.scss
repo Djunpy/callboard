@@ -1,18 +1,18 @@
 .header{
+    .search__input {
+            @apply w-full sm:text-xl  sm:indent-10 sm:p-2 sm:rounded-l-xl focus:ring-1 focus:ring-primary-color bg-gray-200 p-2 indent-2;
+        }
 
     .custom-hover{
         @apply hover:text-primary-color transition-all cursor-pointer;
     }
+
         .header-search {
-            // @apply flex;
+            // @apply hidden sm:flex;
 
             .search-wrapp {
 
-                @apply flex items-center relative;
-
-                input {
-                    @apply w-full text-xl indent-10 p-2 rounded-l-xl focus:ring-1 focus:ring-primary-color bg-gray-200;
-                }
+                @apply  items-center relative flex;
 
                 img {
                     @apply w-8 absolute left-1 opacity-40;
@@ -42,7 +42,7 @@
                     @apply text-white border-solid border-[1px] p-1 transition-all hover:border-primary-color font-bold tracking-wide rounded-md hidden lg:block;
                 }
                 .top-second_btn{
-                    @apply flex items-center justify-center lg:hidden;
+                    @apply  items-center justify-center flex lg:hidden;
                     img{
                         @apply bg-green-100 hover:ring-4 shadow-lg hover:ring-primary-color w-10 rounded-full ;
                     }
@@ -52,7 +52,7 @@
         }
 
         .header-main{
-            @apply bg-white ;
+            @apply bg-white p-3 sm:p-0;
             &.main-header-fixed{
                 @apply fixed z-50 top-0 right-0 left-0 shadow-sm;
             }
@@ -125,9 +125,11 @@
 
                 .main-icons{
                     .main-icon_list{
-                        @apply flex items-center gap-x-5;
+                        @apply flex items-center gap-x-5 transition-colors;
                         .main-list_item{
-
+                            &.active{
+                                @apply bg-primary-color;
+                            }
                             @apply relative shrink-0 cursor-pointer rounded-full hover:text-white shadow-md p-1 hover:bg-primary-color transition-all;
                             img{
                                 @apply w-6 ;
@@ -140,6 +142,20 @@
                         .search-icon {
                             @apply hidden;
                         }
+
+                    }
+                }
+                .header-search__mobile {
+
+                    @apply  sm:hidden absolute left-1 hidden;
+                    &.show {
+                            @apply block sm:hidden;
+                        }
+                    p{
+                        @apply w-full relative;
+                    }
+                    .search-mobile__btn{
+                        @apply absolute top-0 right-0 rounded-r-full bg-primary-color p-2 hover:bg-second-dark-color transition-all hover:text-white;
                     }
                 }
             }
